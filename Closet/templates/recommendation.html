@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Your Wardrobe - Closet</title>
+    <link rel="stylesheet" href="{% static 'css/upload.css'%}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<style>
+    /* Optional: Add some basic styling */
+    .image-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .image-item {
+        flex: 1 1 200px;
+        margin: 10px;
+    }
+
+    .image-item img {
+        width: 30%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                
+                <h1>CLOSET</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'aboutus' %}">About</a></li>
+                <!-- <li><a href="{% url 'upload' %}">Upload Wardrobe</a></li> -->
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="upload-section">
+        <h2>    GET  RECOMMENDATIONS  </h2>
+        <p>Tell us what's the occasssion and we'll recommend you outfits especially currated for you from your own wardrobe</p>
+        
+        <form class="upload-form"  method="POST">
+            {% csrf_token %}
+            <!-- <label for="item-image">Upload Image:</label>
+            <input type="file" id="item-image" name="item-image" accept="image/*" required> -->
+            
+            <!-- <label for="item-name">Item Name:</label>
+            <input type="text" id="item-name" name="item-name" placeholder="e.g., Red Dress" required> -->
+            
+            <label for="occasion">Occasion:</label>
+            <select id="occasion" name="occassion" required>
+                <option value="Casual">Casual</option>
+                <option value="Ethnic">Ethnic</option>
+                <option value="Party">Party</option> 
+                <option value="Formal">Formal</option>
+                <option value="Smart Casual">Smart Casual</option>
+                <option value="Sports">Sports</option> 
+                <option value="Travel">Travel</option> 
+            </select>
+<!--             
+            <label for="item-color">Color:</label>
+            <input type="text" id="item-color" name="item-color" placeholder="e.g., Red">
+            
+            <label for="item-brand">Brand:</label>
+            <input type="text" id="item-brand" name="item-brand" placeholder="e.g., Zara">
+            
+            <label for="item-occasion">Occasion:</label>
+            <input type="text" id="item-occasion" name="item-occasion" placeholder="e.g., Casual, Party"> -->
+
+            <button type="submit" class="upload-button">Recommend</button>
+        </form>
+    </section>
+    <section>
+        <h3>Recommendations</h3>
+        {% if recommendations %}
+        <div class="image-gallery">
+            {% for recommendation in recommendations %}
+                <div class="image-item">
+                    <img src="../media/{{recommendation.image.name }}" alt="Recommended Outfit">
+                    
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No recommendations found for the selected occasion.</p>
+    {% endif %}
+    </section>
+    <footer class="footer">
+        <p>&copy; 2024 Closet. All rights reserved.</p>
+        <p>Follow us on <a href="#">Instagram</a>, <a href="#">Twitter</a>, and <a href="#">Facebook</a></p>
+    </footer>
+
+    <!-- <script>
+        document.getElementById('item-image').addEventListener('change', function() {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const previewImage = document.createElement('img');
+                previewImage.src = e.target.result;
+                previewImage.style.maxWidth = '100%';
+                previewImage.style.marginTop = '20px';
+                const uploadSection = document.querySelector('.upload-section');
+                uploadSection.appendChild(previewImage);
+            };
+            reader.readAsDataURL(this.files[0]);
+        });
+    </script> -->
+    
+</body>
+</html>

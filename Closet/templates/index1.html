@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closet - Your Personal Style Assistant</title>
+    <link rel="icon" href="{% static 'images/Leonardo_Phoenix_a_stylized_rounded_and_modern_logo_for_a_fash_3.jpg' %}">
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="loading-page">
+        <div class="door left-door"></div>
+        <div class="door right-door"></div>
+    </div>
+    <div class="content">
+        <header class="header">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="#home"><img src="{% static 'images/Leonardo_Phoenix_a_stylized_rounded_and_modern_logo_for_a_fash_3.jpg' %}" alt="Closet Logo" class="logo-img"></a>
+                    <h1>CLOSET</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="{% url 'aboutus' %}">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero" >
+            <div class="hero-content">
+                <h2>Your Wardrobe, Perfected</h2>
+                <p>Discover the perfect outfit every day, curated just for you by Closet.</p>
+                <a href="#download" class="cta-button">Get Started</a>
+            </div>
+        </section>
+
+        <!-- <section id="about" class="about">
+            <h2>About Closet</h2>
+            <p>Closet is your personal style assistant, offering chic outfit recommendations based on your wardrobe,
+                preferences, and the occasion. Elevate your fashion game with a touch of elegance and sophistication.
+            </p>
+        </section> -->
+
+        <section id="features" class="features">
+            <h2>Features</h2>
+            <div class="feature-cards">
+                <div class="card"><a href="{% url 'upload' %}" style="text-decoration: none;">
+                    <h3>Upload Your Wardrobe</h3>
+                    <p>Digitize and organize your clothing items effortlessly.</p>
+                </a></div>
+                <div class="card">
+                    <h3>Personalized Outfit Ideas</h3>
+                    <p>Get stylish outfit recommendations tailored to your unique style.</p>
+                </div>
+                <div class="card">
+                    <h3>Style Insights</h3>
+                    <p>Analyze your fashion trends and discover new style inspirations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section id="download" class="download">
+        <h2>Download the App</h2>
+        <p>Available soon on the App Store and Google Play.</p>
+        <div class="store-buttons">
+            <a href="#"><img src="appstore.png" alt="App Store"></a>
+            <a href="#"><img src="playstore.png" alt="Google Play"></a>
+        </div>
+    </section> -->
+
+        <footer id="contact" class="footer">
+            <p>Contact Us: <a href="mailto:support@closetapp.com">support@closetapp.com</a></p>
+            <p>Follow us on <a href="#">Instagram</a>, <a href="#">Twitter</a>, and <a href="#">Facebook</a></p>
+        </footer>
+    </div>
+    <script src="{% static 'script.js'%}"></script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+<section id="demo" class="demo">
+    <h2>Try Our Outfit Recommendation Demo</h2>
+    <p>Get a sneak peek at our outfit suggestions. Try it now!</p>
+    <form action="{% url 'demo_recommendation' %}" method="POST">
+        {% csrf_token %}
+        <label for="occasion">Select Occasion:</label>
+        <select name="occasion" id="occasion">
+            <option value="casual">Casual</option>
+            <option value="formal">Formal</option>
+            <option value="party">Party</option>
+            <option value="sports">Sports</option>
+            <option value="wedding">Wedding</option>
+        </select>
+        <button type="submit" class="cta-button">Get Outfit Recommendation</button>
+    </form>
+</section>

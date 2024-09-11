@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Closet</title>
+    <link rel="icon" href="{% static 'images/Leonardo_Phoenix_a_stylized_rounded_and_modern_logo_for_a_fash_3.jpg' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="{% static 'images/Leonardo_Phoenix_a_stylized_rounded_and_modern_logo_for_a_fash_3.jpg' %}" alt="Closet Logo" class="logo-img">
+                <h1>CLOSET</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="#contactt">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" >
+        <div class="hero-content">
+            <h2>Welcome, {{ user.username }}</h2>
+            <p>Manage your wardrobe, get outfit recommendations, and discover insights.</p>
+        </div>
+    </section>
+
+    <section class="profile-options" id="profile-options">
+        <h2>Your Dashboard</h2>
+        <div class="feature-cards">
+            <div class="card">
+                <h3>Upload Your Wardrobe</h3>
+                <p>Digitize and organize your clothing items effortlessly.</p>
+                <a href="{% url 'upload' %}" class="cta-button">Upload</a>
+            </div>
+            <div class="card">
+                <h3>Get Recommendations</h3>
+                <p>Receive personalized outfit ideas based on your wardrobe.</p>
+                <a href="{% url 'recommendation' %}" class="cta-button">Recommend</a>
+            </div>
+            <div class="card">
+                <h3>Wardrobe Insights</h3>
+                <p>Analyze your clothing trends and style preferences.</p>
+                
+            </div>
+            <div class="card">
+                <h3>Favorite Outfits</h3>
+                <p>Save and manage your favorite outfits.</p>
+                
+            </div>
+            <div class="card">
+                <h3>Account Settings</h3>
+                <p>Manage your profile, privacy settings, and more.</p>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Contact Us: <a href="mailto:support@closetapp.com">support@closetapp.com</a></p>
+        <p>Follow us on <a href="#">Instagram</a>, <a href="#">Twitter</a>, and <a href="#">Facebook</a></p>
+    </footer>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+
+</html>

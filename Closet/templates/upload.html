@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Your Wardrobe - Closet</title>
+    <link rel="stylesheet" href="{% static 'css/upload.css'%}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                
+                <h1>CLOSET</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'aboutus' %}">About</a></li>
+                <!-- <li><a href="{% url 'upload' %}">Upload Wardrobe</a></li> -->
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="upload-section">
+        <h2>Upload Your Wardrobe</h2>
+        <p>Add your clothing items to the virtual wardrobe. Upload images, categorize them, and keep your wardrobe organized.</p>
+        
+        <form class="upload-form" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <label for="item-image">Upload Image:</label>
+            <input type="file" id="item-image" name="item-image" accept="image/*" required>
+            
+            <!-- <label for="item-name">Item Name:</label>
+            <input type="text" id="item-name" name="item-name" placeholder="e.g., Red Dress" required> -->
+            
+            <!-- <label for="item-category">Category:</label>
+            <select id="item-category" name="item-category" required>
+                <option value="apparel">Apparel</option>
+                <option value="footwear">Footwear</option>
+                <option value="accessories">Accessories</option> -->
+                <!-- <option value="outerwear">Outerwear</option>
+                <option value="shoes">Shoes</option>
+                <option value="accessories">Accessories</option> -->
+            </select>
+<!--             
+            <label for="item-color">Color:</label>
+            <input type="text" id="item-color" name="item-color" placeholder="e.g., Red">
+            
+            <label for="item-brand">Brand:</label>
+            <input type="text" id="item-brand" name="item-brand" placeholder="e.g., Zara">
+            
+            <label for="item-occasion">Occasion:</label>
+            <input type="text" id="item-occasion" name="item-occasion" placeholder="e.g., Casual, Party"> -->
+
+            <button type="submit" class="upload-button">Upload Item</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Closet. All rights reserved.</p>
+        <p>Follow us on <a href="#">Instagram</a>, <a href="#">Twitter</a>, and <a href="#">Facebook</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('item-image').addEventListener('change', function() {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const previewImage = document.createElement('img');
+                previewImage.src = e.target.result;
+                previewImage.style.maxWidth = '100%';
+                previewImage.style.marginTop = '20px';
+                const uploadSection = document.querySelector('.upload-section');
+                uploadSection.appendChild(previewImage);
+            };
+            reader.readAsDataURL(this.files[0]);
+        });
+    </script>
+    
+</body>
+</html>
